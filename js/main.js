@@ -110,10 +110,9 @@ function connect(room) {
     localPeerConnection = new RTCPeerConnection(server);
 
     // create local data channel, send it to remote
-    navigator.getUserMedia({
-        video: true,
-        audio: true
-    }, function(stream) {
+    var constraints = { audio: true, video:true }
+
+    navigator.getUserMedia(constraints, function(stream) {
         // get and save local stream
         trace('Got stream, saving it now and starting RTC conn');
 
