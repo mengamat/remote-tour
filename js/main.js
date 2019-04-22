@@ -98,19 +98,13 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia ||
     navigator.webkitGetUserMedia || navigator.msGetUserMedia;
 window.SignallingServer = window.SignallingServer;
 
-var sdpConstraints = {
-    optional: [],
-    mandatory: {
-        OfferToReceiveVideo: true,
-    }
-}
 
 function connect(room) {
     // create peer connection
     localPeerConnection = new RTCPeerConnection(server);
 
     // create local data channel, send it to remote
-    var constraints = { audio: true, video:true }
+    var constraints = { audio: { volume: 0.5, echoCancellation: true, noiseSuppression: true, autoGainControl: true }, video:true }
 
     navigator.getUserMedia(constraints, function(stream) {
         // get and save local stream
