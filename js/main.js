@@ -6,23 +6,22 @@
 // var serverIP = "http://localhost:2013";
 
 //my signalling server
-var serverIP = "http://45.55.61.164:2013/";
+var serverIP = "http://213.32.22.124:1979/";
 
 // RTCPeerConnection Options
 var server = {
     // Uses Google's STUN server
     iceServers: [{
-        "url": "stun:piratefsh@45.55.61.164"
-    }, 
-    {
-    // Use my TURN server on DigitalOcean
-        'url': 'turn:piratefsh@45.55.61.164',
-        'credential': 'password'
-    }]
+            "url": "stun:stun.voip.ovh.net"
+        },
+        {
+            url: 'turn:numb.viagenie.ca',
+            credential: 'muazkh',
+            username: 'webrtc@live.com'
+        }
+    ]
 };
-// various other development IPs
-// var serverIP = "http://192.168.43.241:2013";
-// var serverIP = "http://10.0.11.196:2013";
+
 
 var localPeerConnection, signallingServer;
 
